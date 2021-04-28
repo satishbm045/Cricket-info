@@ -13,6 +13,11 @@ class OldMatches extends React.Component{
                 ,isSuccess: false
                 ,message: 'Loading'
             }
+            ,commentary: {
+                data: {}
+                ,isSuccess: false
+                ,message: 'Loading'
+            }
             ,SelectedMatchId: ''
             ,SelectedSeriesId: ''
             ,SelectedMatchStatus: ''
@@ -54,6 +59,23 @@ class OldMatches extends React.Component{
                     message:'There Some Connectivity Problem Please check your internet connection',
                     isSuccess: false 
                 }
+            })
+        })
+        axios({
+            url: 'https://dev132-cricket-live-scores-v1.p.rapidapi.com/comments.php?seriesid='+match.series.id+'&matchid='+match.id,
+            method: 'get',
+            headers: {
+                "X-RapidAPI-Host" : "dev132-cricket-live-scores-v1.p.rapidapi.com"
+                ,"X-RapidAPI-Key" : "6e9b6a0a65msh6bd761160573386p1ba0d1jsn67e1f7c9715e"
+            }
+        }).then(function (response) {
+            console.log(response.data);
+            self.setState({
+                commentary :response.data
+            })
+        }).catch(function(response){
+            self.setState({
+                commentary:'There Some Connectivity Problem Please check your internet connection'
             })
         })
         document.getElementById('AllMatchView').style.display = 'none';
@@ -126,7 +148,7 @@ class OldMatches extends React.Component{
                                         <div>{this.state.SelectedMatchesDetail.data.meta.series.name}</div>
                                     </div>
                                     <div>{this.state.SelectedMatchStatus}</div>
-                                    <FullScoreBoard Match = {this.state.SelectedMatchesDetail}/>
+                                    <FullScoreBoard Match = {this.state.SelectedMatchesDetail} matchCommentryData={this.state.commentary}/>
                                     <div className="moreInformation">
                                         More Information:
                                         <ul>
