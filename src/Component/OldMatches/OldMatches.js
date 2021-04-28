@@ -148,7 +148,6 @@ class OldMatches extends React.Component{
                                         <div>{this.state.SelectedMatchesDetail.data.meta.series.name}</div>
                                     </div>
                                     <div>{this.state.SelectedMatchStatus}</div>
-                                    <FullScoreBoard Match = {this.state.SelectedMatchesDetail} matchCommentryData={this.state.commentary}/>
                                     <div className="moreInformation">
                                         More Information:
                                         <ul>
@@ -157,6 +156,7 @@ class OldMatches extends React.Component{
                                             <li>Most Wickets Award: <span className="highlightText">{this.state.SelectedMatchesDetail.data.fullScorecardAwards.mostWicketsAward.name} - {this.state.SelectedMatchesDetail.data.fullScorecardAwards.mostWicketsAward.wickets} Wickets</span></li>
                                         </ul>
                                     </div>
+                                    <FullScoreBoard Match = {this.state.SelectedMatchesDetail} matchCommentryData={this.state.commentary}/>
                                 </div>
                             }
                         </div>
