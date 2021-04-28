@@ -103,7 +103,7 @@ const FullScoreBoard = (props) =>{
                                                 eachBall.comments.map((data,index)=>{
                                                     return(
                                                         <li className="eachComment" key={index}>
-                                                            {data.text}
+							    `${ballData.id}`.`${eachBall.ballNumber}`: {data.text}
                                                         </li>
                                                     )
                                                 })
